@@ -1,0 +1,39 @@
+# VisionGuard theme: compact, high-contrast inspection dashboard (light/dark toggle stays available).
+# No external fonts, so the app also looks right offline.
+
+[theme]
+showWidgetBorder = true
+showSidebarBorder = true
+baseRadius = "6px"
+buttonRadius = "6px"
+baseFontSize = 14
+headingFontSizes = ["28px", "21px", "17px", "15px", "14px", "12px"]
+linkUnderline = false
+paddingTop = "1rem"
+paddingBottom = "3rem"
+
+[theme.light]
+primaryColor = "#0F766E"
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#F1F5F9"
+textColor = "#0F172A"
+borderColor = "#CBD5E1"
+redColor = "#DC2626"
+greenColor = "#059669"
+chartCategoricalColors = ["#6B6B6B", "#E69F00", "#56B4E9", "#009E73", "#D55E00", "#CC79A7", "#0072B2"]
+
+[theme.dark]
+primaryColor = "#2DD4BF"
+backgroundColor = "#0B1220"
+secondaryBackgroundColor = "#111A2E"
+textColor = "#E2E8F0"
+borderColor = "#334155"
+redColor = "#F87171"
+greenColor = "#34D399"
+chartCategoricalColors = ["#9CA3AF", "#E69F00", "#56B4E9", "#009E73", "#D55E00", "#CC79A7", "#0072B2"]
+
+[server]
+maxUploadSize = 50
+
+[browser]
+gatherUsageStats = false

@@ -1,0 +1,12 @@
+# Core dependencies (CPU only). Tested with Python 3.13 on Windows 11.
+numpy>=1.26
+scipy>=1.11
+opencv-python-headless>=4.9
+scikit-learn>=1.4
+scikit-image>=0.22
+pillow>=10.0
+matplotlib>=3.8
+pandas>=2.1
+pyyaml>=6.0
+streamlit>=1.40
+pytest>=8.0

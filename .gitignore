@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+# datasets, weights and generated artefacts are never committed
+data/*
+!data/.gitkeep
+models/*
+!models/.gitkeep
+outputs/*
+!outputs/.gitkeep
+*.pt
+*.pth
+*.npz
+.streamlit/secrets.toml

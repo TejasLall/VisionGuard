@@ -1,0 +1,5 @@
+# OPTIONAL: pretrained DINOv2 feature backend.
+# Install the CPU build of PyTorch first (smaller download), then transformers:
+#   pip install torch --index-url https://download.pytorch.org/whl/cpu
+#   pip install -r requirements-deep.txt
+transformers>=4.40

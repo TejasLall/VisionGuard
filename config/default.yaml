@@ -1,0 +1,43 @@
+# VisionGuard default configuration. Every key maps 1:1 to a dataclass in src/config.py.
+seed: 0
+
+features:
+  backend: handcrafted        # handcrafted (CPU, default) | dinov2 (optional, needs requirements-deep.txt)
+  image_size: 256             # analysis resolution (images are resized to size x size)
+  fine_window: 9              # handcrafted fine scale: receptive field (px)
+  fine_stride: 4              #   feature-grid step (px)  -> 64x64 grid at 256 px
+  coarse_window: 33           # handcrafted coarse scale: receptive field (px)
+  coarse_stride: 8            #   feature-grid step (px)  -> 32x32 grid at 256 px
+  dino_model: facebook/dinov2-small
+  dino_input_size: 448        # multiple of 14 -> 32x32 token grid
+  dino_fine_layers: [6, 7, 8] # hidden_states indices averaged for the fine scale
+  dino_coarse_pool: 3         # token neighbourhood averaged for the coarse scale
+  allow_fallback: false       # if true, an unavailable DINOv2 falls back to the labelled handcrafted backend
+
+preprocess:                   # Contribution A (applied only when enabled: true)
+  enabled: false
+  clahe_mode: always          # always | auto | off
+  clahe_clip_limit: 2.0
+  clahe_tile_grid: 8
+  flatfield: true
+  flatfield_sigma_frac: 0.2
+  lum_norm: true
+  gray_world: false
+
+detector:
+  n_components: 0.95          # float in (0,1): explained-variance ratio; int >= 1: fixed count
+  smooth_sigma: 4.0
+  max_patches: 150000
+  calibration: crossfit       # crossfit (held-out normal scores) | resubstitution (biased)
+  calib_folds: 5
+  multiscale: false           # Contribution B
+  alpha: 0.5                  # weight of the fine scale: S = alpha*S_fine + (1-alpha)*S_coarse
+  image_score: max            # max | topk_mean
+  topk_frac: 0.01
+
+threshold:                    # Contribution C
+  method: fixed               # fixed | mean_std | percentile
+  fixed_value: 3.0            # z-score units of the normalised anomaly map
+  k: 3.0
+  percentile: 99.0
+  min_area: 0
